@@ -93,11 +93,15 @@ section {
   position: relative;
 }
 .sec1 .img_slide{
-  /* width: 700%; */
-  width: 100%;
+  /*width: 700%;
+  */width: 100%;
   height: 100%;
   display: flex;
-  transition: transform 1s;
+  transition: transform 0.3s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out;
+  -o-transition: transform 0.3s ease-in-out;
 }
 .sec1 .img_slide .inner_flex {
   /* width: calc(100% / 7); */
@@ -120,6 +124,20 @@ section {
 .inner_flex .img4{background-image: url(img/bg4.png);}
 .inner_flex .img5{background-image: url(img/bg5.png);}
  
+/* 첫화면 transform */
+.sec1 .img_slide .transitionImg {
+  opacity: 0.3;
+  transform: scale(0.5);
+  transition: all 0.7s linear;
+  -webkit-transition: all 0.7s linear;
+  -moz-transition: all 0.7s linear;
+  -ms-transition: all 0.7s linear;
+  -o-transition: all 0.7s linear;
+}
+.sec1 .img_slide .transitionImg.on {
+  opacity: 1;
+  transform: scale(1);
+}
 .inner_flex .img .contentBox {
   width: 60%;
   display: flex;
@@ -235,11 +253,23 @@ section {
   /* position: relative; */
   background-color: #f7fbff;
 }
+/* sec2 text move */
 .sec2 .contentBox2 {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  transform: scale(0.5);
+  opacity: 0;
+  transition: all 1s linear;
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+}
+.sec2 .contentBox2.on {
+  transform: scale(1);
+  opacity: 1;
 }
 .sec2 .contentBox2 .largeText {
   font-size: 50px;
@@ -247,6 +277,13 @@ section {
 }
 .sec2 .contentBox2 .smallText {
   font-size: 20px;
+}
+.sec2 .contentBox2 .largeText > span, .sec2 .contentBox2 .smallText > span {
+  transform: scale(0.5);
+  transition: all 0.5s ease-in-out;
+}
+.sec2 .contentBox2.on .largeText > span .sec2 .contentBox2.on .smallText > span {
+  transform: scale(1);
 }
 .sec2 .iconBox {
   width: 80%;
