@@ -1,15 +1,13 @@
+let container = document.querySelector(".container")
+let sec0 = document.querySelector(".sec0");
 let sec1 = document.querySelector(".sec1");
 let sec2 = document.querySelector(".sec2");
 let sec3 = document.querySelector(".sec3");
 let sec4 = document.querySelector(".sec4");
 let sec5 = document.querySelector(".sec5");
 
-
-
-
-
-
 let img_slide = document.querySelector(".img_slide");
+let transitionImg = document.querySelector(".sec1 .img_slide .transitionImg")
 let index = 1;
 let imgNum = document.querySelectorAll(".inner_flex .img").length;
 // let step = 100 / imgNum;
@@ -18,6 +16,15 @@ let presentPage = document.querySelector(".presentPage");
 let totalPage = document.querySelector(".totalPage");
 let stateLine = document.querySelector(".stateLine");
 let totalPageNum = imgNum-2
+
+document.querySelector(".closeX").addEventListener("click", () => {
+  sec0.classList.remove("on");
+  container.classList.add(".on");
+})
+document.querySelector(".popup").addEventListener("click", ()=> {
+  container.classList.remove(".on");
+  sec0.classList.add("on");
+})
 
 function startScroll() {
   let sy = window.scrollY;
@@ -29,14 +36,30 @@ function startScroll() {
   let s5 = sec5.offsetTop;
 
   // sec1 구간
+  // 실행과 동시에 첫이미지 확대 후 슬라이드 되는 형식
   // if (sy >= s1 - navH && sy <= s2 - navH) {
   //   document.querySelector(".sec1 .img_slide .transitionImg").classList.add("on");
   // }
   // sec2 구간
-  if (sy > s2 - navH && sy <= s3 - navH) {
+  if (sy > (s2-500)- navH && sy <= s3 - navH) {
     document.querySelector(".contentBox2").classList.add("on");
   }
-  
+  if (sy > (s2-200)- navH && sy <= s3 - navH) {
+    document.querySelector(".iconBox").classList.add("on");
+  }
+  // sec3 구간
+  if (sy > (s3-400)- navH && sy <= s4 - navH) {
+    document.querySelector(".contentBox3").classList.add("on");
+  }
+  // sec4 구간
+  if (sy > (s4-500)- navH && sy <= s5 - navH) {
+    document.querySelector(".contentBox4").classList.add("on");
+  }
+  //  sec5 구간
+  if (sy > (s5-300)- navH) {
+    document.querySelector(".contentBox5").classList.add("on");
+    document.querySelector(".contentBox5 .imgBox").classList.add("on");
+  }
 }
 
 function showImage() {
@@ -92,6 +115,10 @@ window.addEventListener("click", () => {
 startScroll()
 window.addEventListener("scroll", startScroll);
 
+window.addEventListener("DOMContentLoaded", ()=> {
+  transitionImg.classList.add("on");
+
+})
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".sec1 .img_slide .transitionImg").classList.add("on");
     const dropdown = document.querySelector(".familyDropdown");
@@ -99,5 +126,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggleBtn.addEventListener("click", function () {
       dropdown.classList.toggle("active");
-    });
   });
+});
+
+  // el.addEventListener("transitionend", updateTransition, true);
+
